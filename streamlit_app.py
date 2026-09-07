@@ -1,6 +1,11 @@
-import streamlit as st
+# example/st_app.py
 
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
+import streamlit as st
+from streamlit_gsheets import GSheetsConnection
+
+url = "https://docs.google.com/spreadsheets/d/1mEC_AEYIGVGaDWdx2fUjGjChgZ3PQDCICQci_IbNKjg/edit?usp=sharing"
+
+conn = st.connection("gsheets", type=GSheetsConnection)
+
+data = conn.read(spreadsheet=url, usecols=[0, 1])
+st.dataframe(data)
