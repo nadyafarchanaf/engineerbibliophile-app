@@ -9,7 +9,6 @@ from components.detail_book_page.header import render_header
 from components.detail_book_page.book_info import render_left_column
 from components.detail_book_page.book_details import render_right_column
 from utils.db import load_data  # Import fungsi load data
-from pages.collection_page import render_collection_page
 
 # 1. Konfigurasi
 st.set_page_config(page_title="Engineer Bibliophile", page_icon="📚", layout="wide")
@@ -31,6 +30,3 @@ if not df_buku.empty:
         render_right_column(buku_terpilih)
 else:
     st.warning("Data buku kosong atau spreadsheet belum terhubung dengan benar.")
-
-if not df_buku.empty:
-    render_collection_page(df_buku) 
